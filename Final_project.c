@@ -1,4 +1,5 @@
 # include <stdio.h>
+hi
 # include <stdlib.h>
 
 int first_choice;
