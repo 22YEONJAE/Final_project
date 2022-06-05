@@ -1,0 +1,4 @@
+login: Eldor
+Password: p@assw0rd
+Store name: Store 1
+

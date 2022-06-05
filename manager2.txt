@@ -1,0 +1,3 @@
+login: Firuz
+Password: pAsswOrd
+Store name: Store 2
