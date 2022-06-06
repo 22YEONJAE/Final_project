@@ -57,6 +57,7 @@ void search_products(int num_product, int num_product2);
 
 void main(void)
 {
+	
 	int num_product = 0;
 	int num_product2 = 0;
 	
@@ -240,7 +241,6 @@ void login_success_screen1()
 
 void manage_products1(int num_product)
 {
-
 	int i, j;
 	int removing_choice, editing_choice;
 	
@@ -276,7 +276,6 @@ void manage_products1(int num_product)
 			printf("    Product Name  Price  Quantity  Discount  Expire Date\n\n");
 			
 			
-			
 			for (i = 0; i<num_product; i++)
 			{
 				strcpy(date_archive[i], store1.expire_date[i]);
@@ -308,9 +307,8 @@ void manage_products1(int num_product)
 					}
 				}
 			}
-			
-			
 			break;
+			
 		case 3:
 			printf("*** Store 1 ***\n");
 			printf("Shopkeeper: Eldor\n");
@@ -322,18 +320,19 @@ void manage_products1(int num_product)
 				if (strcmp(store1.discount[i],"None") != 0)
 					printf("    %s %s\t  %d	  %d	   %s	      %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
 			}
-			printf("\n\n    Press any key to continue");
+			printf("\n\n    Press any key to continue\n");
 			break;
+			
 		case 4:
 			printf("*** Store 1 ***\n");
 			printf("Shopkeeper: Eldor\n");
 			printf("=====================================\n");
 			printf("    Add New Product:\n\n");
-			printf("    Product Name:"); scanf("%s %s", store1.name[num_product+1], store1.name2[num_product+1]);
-			printf("    Price (per item):"); scanf("%d", &store1.price[num_product+1]);
-			printf("    Quantity:"); scanf("%d", &store1.quantity[num_product+1]);
-			printf("    Discount:"); scanf("%s", store1.discount[num_product+1]);
-			printf("    Expire date:"); scanf("%s", store1.expire_date[num_product+1]);
+			printf("    Product Name: "); scanf("%s %s", store1.name[num_product+1], store1.name2[num_product+1]);
+			printf("\n    Price (per item): "); scanf("%d", &store1.price[num_product+1]);
+			printf("\n    Quantity: "); scanf("%d", &store1.quantity[num_product+1]);
+			printf("\n    Discount: "); scanf("%s", store1.discount[num_product+1]);
+			printf("\n    Expire date: "); scanf("%s", store1.expire_date[num_product+1]);
 			
 			FILE *fp;
 			fp = fopen("store1.txt","a");
@@ -343,9 +342,8 @@ void manage_products1(int num_product)
 			
 			fclose(fp);
 			
-			system("cls");
-			main();
 			break;
+			
 		case 5:
 			printf("*** Store 1 ***\n");
 			printf("Shopkeeper: Eldor\n");
@@ -367,15 +365,14 @@ void manage_products1(int num_product)
 			{
 				if ((i+1) != removing_choice)
 				{
-					fprintf(fp2, "%s %s		%d	%d	%s	%s\n",store1.name[i],store1.name2[i],store1.price[i],store1.quantity[i],store1.discount[i],store1.expire_date[i]);
+					fprintf(fp2, "%s %s	%d	%d	%s	%s\n",store1.name[i],store1.name2[i],store1.price[i],store1.quantity[i],store1.discount[i],store1.expire_date[i]);
 				}
 
 			}
 			
 			fclose(fp2);
 			
-			system("cls");
-			main();
+		
 			break;
 		case 6:
 			printf("*** Store 1 ***\n");
@@ -397,11 +394,11 @@ void manage_products1(int num_product)
 			printf("=====================================\n");
 			printf("    Editing Product:\n");
 			printf("    Product ID: %d\n\n", editing_choice);
-			printf("    Product Name: "); scanf("%s %s", editing_name, editing_name2);
-			printf("    Price (per item): "); scanf("%d", &editing_price); printf("\n");
-			printf("    Quantity: "); scanf("%d", &editing_quantity); printf("\n");
-			printf("    Discount: "); scanf("%s", editing_discount); printf("\n");
-			printf("    Expire Date: "); scanf("%s", editing_date);
+			printf("\n    Product Name: "); scanf("%s %s", editing_name, editing_name2);
+			printf("\n    Price (per item): "); scanf("%d", &editing_price); printf("\n");
+			printf("\n    Quantity: "); scanf("%d", &editing_quantity); printf("\n");
+			printf("\n    Discount: "); scanf("%s", editing_discount); printf("\n");
+			printf("\n    Expire Date: "); scanf("%s", editing_date);
 			
 			FILE *fp3;
 			fp3 = fopen("store1.txt","w");
@@ -410,18 +407,16 @@ void manage_products1(int num_product)
 			{
 				if ((i+1) != editing_choice)
 				{
-					fprintf(fp3, "%s %s		%d	%d	%s	%s\n",store1.name[i],store1.name2[i],store1.price[i],store1.quantity[i],store1.discount[i],store1.expire_date[i]);
+					fprintf(fp3, "%s %s	%d	%d	%s	%s\n",store1.name[i],store1.name2[i],store1.price[i],store1.quantity[i],store1.discount[i],store1.expire_date[i]);
 				}
 				else if ((i+1) == editing_choice)
 				{
-					fprintf(fp3, "%s %s		%d	%d	%s	%s\n",editing_name,editing_name2,editing_price,editing_quantity,editing_discount,editing_date);
+					fprintf(fp3, "%s %s	%d	%d	%s	%s\n",editing_name,editing_name2,editing_price,editing_quantity,editing_discount,editing_date);
 				}
 
 			}
 			
 			fclose(fp3);
-			system("cls");
-			main();
 			
 			break;
 		case 7:
@@ -508,7 +503,7 @@ void manage_products2(int num_product2)
 			printf("    Product Name  Price  Quantity  Discount  Expire Date\n\n");
 			for(j = 0; j < num_product2; j++)
 			{
-				if (strcmp(store1.discount[j],"None") != 0)
+				if (strcmp(store2.discount[j],"None") != 0)
 					printf("    %s %s\t  %d	  %d	   %s	      %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
 			}
 			printf("\n\n    Press any key to continue");
@@ -518,22 +513,21 @@ void manage_products2(int num_product2)
 			printf("Shopkeeper: Firuz\n");
 			printf("=====================================\n");
 			printf("    Add New Product:\n\n");
-			printf("    Product Name:"); scanf("%s %s", store2.name[num_product2+1], store2.name2[num_product2+1]);
-			printf("    Price (per item):"); scanf("%d", &store1.price[num_product2+1]);
-			printf("    Quantity:"); scanf("%d", &store2.quantity[num_product2+1]);
-			printf("    Discount:"); scanf("%s", store2.discount[num_product2+1]);
-			printf("    Expire date:"); scanf("%s", store2.expire_date[num_product2+1]);
+			printf("    Product Name: "); scanf("%s %s", store2.name[num_product2+1], store2.name2[num_product2+1]);
+			printf("\n    Price (per item): "); scanf("%d", &store2.price[num_product2+1]);
+			printf("\n    Quantity: "); scanf("%d", &store2.quantity[num_product2+1]);
+			printf("\n    Discount: "); scanf("%s", store2.discount[num_product2+1]);
+			printf("\n    Expire date: "); scanf("%s", store2.expire_date[num_product2+1]);
 			
 			FILE *fp;
 			fp = fopen("store2.txt","a");
 			
 			fprintf(fp,"\n");
-			fprintf(fp, "%s %s	%d	%d	%s	%s", store2.name[num_product2+1],store2.name2[num_product2+1],store2.price[num_product2+1],store2.quantity[num_product2+1],store2.discount[num_product2+1],store2.expire_date[num_product2+1]);
+			fprintf(fp, "%s %s	%d	%d	%s	 %s", store2.name[num_product2+1],store2.name2[num_product2+1],store2.price[num_product2+1],store2.quantity[num_product2+1],store2.discount[num_product2+1],store2.expire_date[num_product2+1]);
 			
 			fclose(fp);
 			
-			system("cls");
-			main();
+
 			break;
 		case 5:
 			printf("*** Store 2 ***\n");
@@ -563,8 +557,7 @@ void manage_products2(int num_product2)
 			
 			fclose(fp2);
 			
-			system("cls");
-			main();
+
 			break;
 		case 6:
 			printf("*** Store 2 ***\n");
@@ -584,13 +577,13 @@ void manage_products2(int num_product2)
 			printf("*** Store 2 ***\n");
 			printf("Shopkeeper: Firuz\n");
 			printf("=====================================\n");
-			printf("    Editing Product:\n");
+			printf("    Editing Product: \n");
 			printf("    Product ID: %d\n\n", editing_choice);
-			printf("    Product Name: "); scanf("%s %s", editing_name, editing_name2);
-			printf("    Price (per item): "); scanf("%d", &editing_price); printf("\n");
-			printf("    Quantity: "); scanf("%d", &editing_quantity); printf("\n");
-			printf("    Discount: "); scanf("%s", editing_discount); printf("\n");
-			printf("    Expire Date: "); scanf("%s", editing_date);
+			printf("\n    Product Name: "); scanf("%s %s", editing_name, editing_name2);
+			printf("\n    Price (per item): "); scanf("%d", &editing_price); printf("\n");
+			printf("\n    Quantity: "); scanf("%d", &editing_quantity); printf("\n");
+			printf("\n    Discount: "); scanf("%s", editing_discount); printf("\n");
+			printf("\n    Expire Date: "); scanf("%s", editing_date);
 			
 			FILE *fp3;
 			fp3 = fopen("store2.txt","w");
@@ -599,18 +592,17 @@ void manage_products2(int num_product2)
 			{
 				if ((j+1) != editing_choice)
 				{
-					fprintf(fp3, "%s %s		%d	%d	%s	%s\n",store2.name[j],store2.name2[j],store2.price[j],store2.quantity[j],store2.discount[j],store2.expire_date[j]);
+					fprintf(fp3, "%s %s	%d	%d	%s	%s\n",store2.name[j],store2.name2[j],store2.price[j],store2.quantity[j],store2.discount[j],store2.expire_date[j]);
 				}
 				else if ((j+1) == editing_choice)
 				{
-					fprintf(fp3, "%s %s		%d	%d	%s	%s\n",editing_name,editing_name2,editing_price,editing_quantity,editing_discount,editing_date);
+					fprintf(fp3, "%s %s	%d	%d	%s	%s\n",editing_name,editing_name2,editing_price,editing_quantity,editing_discount,editing_date);
 				}
 
 			}
 			
 			fclose(fp3);
-			system("cls");
-			main();
+
 			
 			break;
 		case 7:
@@ -690,15 +682,15 @@ void show_all_products(int num_product, int num_product2)
 	printf("*** CUSTOMER PAGE ***\n");
 	printf("=====================================\n");
 	printf("    Show all products:\n\n");
-	printf("    Product Name  Price  Quantity  Discount  Expire Date\n\n");
+	printf("    Product Name	Store		Shopkeeper      Price    Quantity    Discount    Expire Date\n\n");
 		
 	for(i = 0; i < num_product; i++)
 	{
-		printf("    %s %s\t  %d	  %d	   %s	     %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
+		printf("    %s %s		Store 1		Eldor		%d	  %d	     %s	 %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
 	}
 	for(j = 0; j < num_product2; j++)
 	{
-		printf("    %s %s\t  %d	  %d	   %s	     %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
+		printf("    %s %s		Store 2		Firuz  		%d	  %d	     %s	 %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
 	}
 	printf("\n    Press any key ");
 }
@@ -710,16 +702,16 @@ void products_with_discounts(int num_product, int num_product2)
 	printf("*** CUSTOMER PAGE ***\n");
 	printf("=====================================\n");
 	printf("    Show products with discounts:\n\n");
-	printf("    Product Name  Price  Quantity  Discount  Expire Date\n\n");
+	printf("    Product Name	Store		Shopkeeper      Price    Quantity    Discount    Expire Date\n\n");
 	for(i = 0; i < num_product; i++)
 	{
 		if (strcmp(store1.discount[i],"None") != 0)
-			printf("    %s %s\t  %d	  %d	   %s	      %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
+			printf("    %s %s		Store 1		Eldor		%d	  %d	     %s	 %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
 	}
 	for(j = 0; j < num_product2; j++)
 	{	
-		if (strcmp(store2.discount[i],"None") != 0)
-			printf("    %s %s\t  %d	  %d	   %s	      %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
+		if (strcmp(store2.discount[j],"None") != 0)
+			printf("    %s %s		Store 2		Firuz  		%d	  %d	     %s	 %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
 	}
 }
 
@@ -729,24 +721,24 @@ void search_products(int num_product, int num_product2)
 	char first_letter;
 	
 	printf("*** CUSTOMER PAGE ***\n");
-	printf("=====================================\n");
+	printf("=====================================\n\n");
 	printf("    Search Product (Enter first letter): ");
 	getchar();
 	scanf("%c", &first_letter);
-	//printf("%c\n", store1.name[0][0]);
-	printf("    Product Name  Price  Quantity  Discount  Expire Date\n\n");
+	printf("\n    Results:\n\n") ;
+	printf("    Product Name	Store		Shopkeeper      Price    Quantity    Discount    Expire Date\n\n");
 	for(i = 0; i < num_product; i++)
 	{
 		if (store1.name[i][0] == first_letter)
 		{
-			printf("    %s %s\t  %d	  %d	   %s	     %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
+			printf("    %s %s		Store 1		Eldor		%d	  %d	     %s	 %s\n\n", store1.name[i], store1.name2[i], store1.price[i], store1.quantity[i], store1.discount[i], store1.expire_date[i]);
 		}
 	}
 	
 	for(j = 0; j < num_product2; j++)
 	{	
 		if (store2.name[j][0] == first_letter)
-			printf("    %s %s\t  %d	  %d	   %s	     %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
+			printf("    %s %s		Store 2		Firuz  		%d	  %d	     %s	 %s\n\n", store2.name[j], store2.name2[j], store2.price[j], store2.quantity[j], store2.discount[j], store2.expire_date[j]);
 	}
 }
 
